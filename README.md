@@ -33,8 +33,15 @@ Ce dépôt contient l'application mobile développée en Flutter.
 - Back-office : https://github.com/sebastienklaus/reunionou/tree/develop
 
 ## Installation :
-** Note : avoir une version de Flutter compatible
-``` reunionou> flutter run --no-sound-null-safety```
+1) Exécuter ce code source:
+
+    ** Note : avoir une version de Flutter compatible
+
+    ``` reunionou> flutter run --no-sound-null-safety```
+
+2) Par fichier d'installation APK:
+
+    Installer le fichier Apk > `Reunionou.apk`
 
 ## En cas d'erreur lors de l'instatllation:
 1) ``` reunionou> flutter clean ```

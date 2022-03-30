@@ -1,5 +1,7 @@
 # Reunionou
-Ce projet permet d'organiser des événements depuis son smartphone ou son ordinateur à travers une API afin de gérer toutes les informations. (lieu, membres, météo, discussion, ...)
+Ce projet permet d'organiser des événements depuis son smartphone ou son ordinateur à travers une API afin de gérer toutes les informations. (lieu, membres, météo, discussion, ...).
+
+
 Ce dépôt contient l'application mobile développée en Flutter.
 
 ## Planning :

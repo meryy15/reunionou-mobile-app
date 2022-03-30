@@ -276,7 +276,10 @@ class DataLoader extends ChangeNotifier {
     try {
       var response = await Dio().put(_usersUri + id,
           options: Options(
-            headers: <String, String>{'token': token, 'Origin': "flutter"},
+            headers: {
+              'Authorization': "Bearer " + token,
+              'Origin': "flutter",
+            },
           ),
           data: {
             "fullname": fullname,
@@ -290,26 +293,26 @@ class DataLoader extends ChangeNotifier {
         var refreshResp = await Dio().get(
           _usersUri + id,
           options: Options(
-            headers: <String, String>{'token': token, 'Origin': "flutter"},
+            headers: {
+              'Authorization': "Bearer " + token,
+              'Origin': "flutter",
+            },
           ),
         );
-        if (response.statusCode == 200) {
+        if (refreshResp.statusCode == 200) {
           //Refresh user in local
-
-          handler = DatabaseHandler();
-          await handler.delUser();
-
           _user = User(
             id: id,
-            email: refreshResp.data['email'],
-            fullname: refreshResp.data['fullname'],
-            username: refreshResp.data['username'],
+            email: refreshResp.data['user']['email'],
+            fullname: refreshResp.data['user']['fullname'],
+            username: refreshResp.data['user']['username'],
             type: "user",
-            token: refreshResp.data['refresh_token'],
+            token: refreshResp.data['user']['refresh_token'],
           );
 
           setUser(_user);
           handler = DatabaseHandler();
+          await handler.delUser();
 
           handler.initializeDB().whenComplete(() async {
             await handler.insertUser(_user);
